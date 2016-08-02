@@ -66,4 +66,4 @@ def vote(request, question_id):
 def logout_view(request):
     logout(request)
     # Redirect to a success page.
-    return render(request, 'polls/logout.html')
+    return HttpResponseRedirect(reverse('polls:login'))
