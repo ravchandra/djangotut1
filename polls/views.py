@@ -6,8 +6,9 @@ from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
 from django.views import generic
 
-
 from .models import Question, Choice
+from .forms import UploadFileForm
+from .utils import handle_uploaded_file
 
 # Create your views here.
 '''
@@ -67,3 +68,18 @@ def logout_view(request):
     logout(request)
     # Redirect to a success page.
     return HttpResponseRedirect(reverse('polls:login'))
+
+@login_required
+def upload_file_view(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect(reverse('polls:upload_success'))
+    else:
+        form = UploadFileForm()
+    return render(request, 'polls/upload_file.html', {'form': form})
+
+@login_required
+def upload_success_view(request):
+    return render(request, 'polls/upload_success.html')

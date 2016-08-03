@@ -23,5 +23,7 @@ urlpatterns = [
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
     url(r'^accounts/login/$', auth_views.login, {'template_name':'polls/login.html'}, name='login'),
     url(r'^accounts/logout/$', views.logout_view, name='logout'),
+    url(r'^upload_file/$', views.upload_file_view, name='upload_file'),
+    url(r'^upload_success/$', views.upload_success_view, name='upload_success'),
     ]
 
