@@ -37,3 +37,11 @@ padding: 15px;
 }
 .row.content {height:auto;} 
 }
+
+.main-center{
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 40px 40px;
+
+}

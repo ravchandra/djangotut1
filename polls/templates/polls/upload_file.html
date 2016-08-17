@@ -19,7 +19,7 @@
 
         <form class="form-horizontal" method="post" action="{% url 'polls:upload_file' %}" enctype="multipart/form-data">
             {% csrf_token %}
-			{{ form.as_ul }}
+			{{ form.as_table }}
             <input type="submit" value="Upload" />
         </form>
 
