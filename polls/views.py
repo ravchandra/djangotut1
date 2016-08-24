@@ -27,8 +27,8 @@ def results(request, question_id):
 '''
 
 @method_decorator(login_required, name='dispatch')
-class IndexView(generic.ListView):
-    template_name = 'polls/index.html'
+class PollsView(generic.ListView):
+    template_name = 'polls/polls.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
@@ -83,3 +83,7 @@ def upload_file_view(request):
 @login_required
 def upload_success_view(request):
     return render(request, 'polls/upload_success.html')
+
+@login_required
+def home_view(request):
+    return render(request, 'polls/home.html')
